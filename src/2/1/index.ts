@@ -44,16 +44,12 @@ export default function main() {
     let totalScore = 0;
     for(const play of inputArray) {
         const [oppMove, yourMove] = translateMoves(play.split(' '))
-        console.log({oppMove, yourMove})
         if(WIN_MAP[oppMove] === yourMove) {
-            console.log('lose!')
-            totalScore += OUTCOME_SCORE.LOSE
+            totalScore += OUTCOME_SCORE.LOSE +  SHAPE_SCORE[yourMove]
         }
         else if (oppMove === yourMove) {
-            console.log('draw')
             totalScore += OUTCOME_SCORE.DRAW + SHAPE_SCORE[yourMove]
         } else {
-            console.log('win')
             totalScore += OUTCOME_SCORE.WIN + SHAPE_SCORE[yourMove]
         }
     }
